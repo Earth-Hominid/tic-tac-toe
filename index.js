@@ -1,13 +1,48 @@
-const gameboard = document.querySelector('div.gameboard')
+// Gameboard Module:
 
-function createGrid(column, row) {
+const gameboard = (() => { 
+  const gameGrid = document.querySelector('div.gameboard')
 
-  for (i=0; i < (column * row); i++) {
-    const squareDiv = document.createElement('div');
-    squareDiv.classList.add('cell');
-    squareDiv.setAttribute('data-cell', "");
-    gameboard.appendChild(squareDiv);
+  function createGrid(column, row) {
+
+    for (i=0; i < (column * row); i++) {
+      const squareDiv = document.createElement('div');
+      squareDiv.classList.add('cell');
+      squareDiv.setAttribute('data-cell', "");
+      gameGrid.appendChild(squareDiv);
+    }
+  };
+
+createGrid(3,3);
+
+})();
+
+// Player Factory:
+
+const PlayerFactory = () => {
+
+  const X = 'x';
+  const O = 'o';
+  let oTurn;
+
+  function placeMark(cell, currentClass) {
+    cell.classList.add(currentClass)
+  };
+  function markerHover() {
+    gameboard.classList.remove(X);
+    gameboard.classList.remove(O);
+
+    if(oTurn) {
+      gameboard.classList.add(O)
+    } else {
+      gameboard.classList.add(X);
+    };
+    
   }
-}
+  return {X, O, placeMark, markerHover}
 
-createGrid(3,3)
+};
+
+
+// Game Module:
+
