@@ -117,4 +117,37 @@ body {
   background-color: #292929;
 }
 
+.end-game {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .4);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.end-game button {
+  font-size: 3rem;
+  color:#BB86FC;
+  background-color: #292929;
+  border: 1px solid #BB86FC;
+  padding: .25em .5em;
+  cursor: pointer;
+}
+
+.end-game button:hover {
+  background-color: #BB86FC;
+  color: #292929;
+  border-color: #292929;
+}
+
+.end-game.show {
+  display: flex;
+}
 
