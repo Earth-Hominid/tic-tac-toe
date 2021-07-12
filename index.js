@@ -57,6 +57,8 @@ const winningCombos = [
 ];
 const dataCells = document.querySelectorAll('[data-cell]');
 const gameBoard = document.getElementById('gameboard');
+const winningMessageTextElement = document.querySelector('[data-endgame-text]');
+const winningMessage = document.getElementById('endgame');
 let oTurn;
 
 startGame();
@@ -76,18 +78,24 @@ function setPlayerMove(e) {
 
   //If it is circles turn, return circle class, otherwise return x class:
   const currentClass = oTurn ? oMarkerClass : xMarkerClass;
-
   placePlayerMove(cell, currentClass);
 
-
   // Check for a winner:
-
   if (checkForWinner(currentClass)) {
-    console.log('winner')
+    endGame(false);
   };
 
   switchTurns();
   setMoveHover();
+
+  function endGame(draw) {
+    if (draw) {
+
+    } else {
+      winningMessageTextElement.innerText = `${oTurn ? "O" : "X"} Wins!`
+    }
+    winningMessage.classList.add('show')
+  };
 
   //Create function to set the player's move on board:
 
@@ -97,7 +105,6 @@ function setPlayerMove(e) {
 
   // Check for a draw:
   // Switch Player Turn:
-
   function switchTurns() {
     oTurn = !oTurn;
   }
@@ -120,3 +127,4 @@ function checkForWinner(currentClass) {
     })
   })
 };
+
