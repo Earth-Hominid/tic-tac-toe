@@ -83,18 +83,27 @@ function setPlayerMove(e) {
   // Check for a winner:
   if (checkForWinner(currentClass)) {
     endGame(false);
-  };
-
-  switchTurns();
-  setMoveHover();
+  } else if (isDraw()) {
+    endGame(true)
+  } else {
+    switchTurns();
+    setMoveHover();
+  }
 
   function endGame(draw) {
     if (draw) {
-
+      winningMessageTextElement.innerText = 'It\'s a Tie!'
     } else {
       winningMessageTextElement.innerText = `${oTurn ? "O" : "X"} Wins!`
     }
     winningMessage.classList.add('show')
+  };
+
+  function isDraw() {
+    // Destructure dataCells into an array in order to use 'every method':
+    return [...dataCells].every(cell => {
+      return cell.classList.contains(xMarkerClass) || cell.classList.contains(oMarkerClass)
+    });
   };
 
   //Create function to set the player's move on board:
