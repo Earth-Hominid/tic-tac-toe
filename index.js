@@ -46,3 +46,22 @@ const PlayerFactory = () => {
 
 // Game Module:
 
+// End Game Module:
+
+const endgame = (() => { 
+  
+  const endGameDiv = document.querySelector('div.endgame');
+
+  const createEndGameMessage = () => {
+    const dataWinningMessageDiv = document.createElement('div');
+    dataWinningMessageDiv.setAttribute('data-endgame-text','');
+    endGameDiv.append(dataWinningMessageDiv);
+    
+    const restartButton = document.createElement('button');
+    restartButton.setAttribute('id', 'restartButton');
+    restartButton.setAttribute('text', 'Play Again');
+    dataWinningMessageDiv.appendChild(restartButton);
+  };
+
+  createEndGameMessage();
+})();
