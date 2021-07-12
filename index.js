@@ -1,3 +1,7 @@
+
+
+
+
 // Gameboard Module:
 
 const gameboard = (() => { 
@@ -50,7 +54,7 @@ const PlayerFactory = () => {
 
 const endgame = (() => { 
   
-  const endGameDiv = document.querySelector('div.endgame');
+  const endGameDiv = document.querySelector('div.end-game');
 
   const createEndGameMessage = () => {
     const dataWinningMessageDiv = document.createElement('div');
@@ -59,8 +63,8 @@ const endgame = (() => {
     
     const restartButton = document.createElement('button');
     restartButton.setAttribute('id', 'restartButton');
-    restartButton.setAttribute('text', 'Play Again');
-    dataWinningMessageDiv.appendChild(restartButton);
+    restartButton.textContent = 'Play Again';
+    endGameDiv.append(restartButton);
   };
 
   createEndGameMessage();
