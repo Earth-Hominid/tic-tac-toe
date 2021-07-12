@@ -19,26 +19,6 @@ createGrid(3,3);
 // Player Factory:
 const PlayerFactory = () => {
 
-  const X = 'x';
-  const O = 'o';
-  let oTurn;
-
-  function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass)
-  };
-  function markerHover() {
-    gameboard.classList.remove(X);
-    gameboard.classList.remove(O);
-
-    if(oTurn) {
-      gameboard.classList.add(O)
-    } else {
-      gameboard.classList.add(X);
-    };
-    
-  }
-  return {X, O, placeMark, markerHover}
-
 };
 
 // End Game Module:
@@ -63,12 +43,37 @@ const endgame = (() => {
 
 // Game Module or Factory?:
 
+const xMarkerClass = 'x'
+const oMarkerClass = 'o'
 const dataCells = document.querySelectorAll('[data-cell]');
+let oTurn;
 
 dataCells.forEach(cell => {
   cell.addEventListener('click', setPlayerMove, { once: true })
 });
 
 function setPlayerMove(e) {
-  console.log('clicked');
+  
+  // Select the cell that has been clicked on:
+  const cell = e.target
+
+  //If it is circles turn, return circle class, otherwise return x class:
+  const currentClass = oTurn ? oMarkerClass : xMarkerClass;
+
+  placePlayerMove(cell, currentClass);
+  switchTurns();
+
+  //Create function to set the player's move on board:
+
+  function placePlayerMove(cell, currentClass) {
+    cell.classList.add(currentClass)
+  }
+
+  // Check for a winner:
+  // Check for a draw:
+  // Switch Player Turn:
+
+  function switchTurns() {
+    oTurn = !oTurn;
+  }
 };
