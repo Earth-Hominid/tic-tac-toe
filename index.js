@@ -46,7 +46,14 @@ const endgame = (() => {
 const xMarkerClass = 'x'
 const oMarkerClass = 'o'
 const dataCells = document.querySelectorAll('[data-cell]');
+const gameBoard = document.getElementById('gameboard');
 let oTurn;
+
+function startGame() {
+
+  
+
+}
 
 dataCells.forEach(cell => {
   cell.addEventListener('click', setPlayerMove, { once: true })
@@ -62,6 +69,7 @@ function setPlayerMove(e) {
 
   placePlayerMove(cell, currentClass);
   switchTurns();
+  setMoveHover();
 
   //Create function to set the player's move on board:
 
@@ -77,3 +85,13 @@ function setPlayerMove(e) {
     oTurn = !oTurn;
   }
 };
+
+function setMoveHover() {
+  gameBoard.classList.remove(xMarkerClass);
+  gameBoard.classList.remove(oMarkerClass);
+    if(oTurn) {
+      gameBoard.classList.add(oMarkerClass)
+    } else {
+      gameBoard.classList.add(xMarkerClass);
+    }
+}
