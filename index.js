@@ -1,9 +1,4 @@
-
-
-
-
 // Gameboard Module:
-
 const gameboard = (() => { 
   const gameGrid = document.querySelector('div.gameboard')
 
@@ -22,7 +17,6 @@ createGrid(3,3);
 })();
 
 // Player Factory:
-
 const PlayerFactory = () => {
 
   const X = 'x';
@@ -47,11 +41,7 @@ const PlayerFactory = () => {
 
 };
 
-
-// Game Module:
-
 // End Game Module:
-
 const endgame = (() => { 
   
   const endGameDiv = document.querySelector('div.end-game');
@@ -68,5 +58,17 @@ const endgame = (() => {
   };
 
   createEndGameMessage();
-  
+
 })();
+
+// Game Module or Factory?:
+
+const dataCells = document.querySelectorAll('[data-cell]');
+
+dataCells.forEach(cell => {
+  cell.addEventListener('click', setPlayerMove, { once: true })
+});
+
+function setPlayerMove(e) {
+  console.log('clicked');
+};
