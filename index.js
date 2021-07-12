@@ -45,6 +45,16 @@ const endgame = (() => {
 
 const xMarkerClass = 'x'
 const oMarkerClass = 'o'
+const winningCombos = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6],
+];
 const dataCells = document.querySelectorAll('[data-cell]');
 const gameBoard = document.getElementById('gameboard');
 let oTurn;
@@ -52,15 +62,12 @@ let oTurn;
 startGame();
 
 function startGame() {
-
   oTurn = false;
   dataCells.forEach(cell => {
     cell.addEventListener('click', setPlayerMove, { once: true })
   });
   setMoveHover();
 };
-
-
 
 function setPlayerMove(e) {
   
@@ -71,6 +78,14 @@ function setPlayerMove(e) {
   const currentClass = oTurn ? oMarkerClass : xMarkerClass;
 
   placePlayerMove(cell, currentClass);
+
+
+  // Check for a winner:
+
+  if (checkForWinner(currentClass)) {
+    console.log('winner')
+  };
+
   switchTurns();
   setMoveHover();
 
@@ -80,7 +95,6 @@ function setPlayerMove(e) {
     cell.classList.add(currentClass)
   }
 
-  // Check for a winner:
   // Check for a draw:
   // Switch Player Turn:
 
@@ -98,3 +112,11 @@ function setMoveHover() {
       gameBoard.classList.add(xMarkerClass);
     }
 }
+
+function checkForWinner(currentClass) {
+  return winningCombos.some(combination => {
+    return combination.every(index => {
+      return dataCells[index].classList.contains(currentClass)
+    })
+  })
+};
