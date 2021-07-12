@@ -49,15 +49,18 @@ const dataCells = document.querySelectorAll('[data-cell]');
 const gameBoard = document.getElementById('gameboard');
 let oTurn;
 
+startGame();
+
 function startGame() {
 
-  
+  oTurn = false;
+  dataCells.forEach(cell => {
+    cell.addEventListener('click', setPlayerMove, { once: true })
+  });
+  setMoveHover();
+};
 
-}
 
-dataCells.forEach(cell => {
-  cell.addEventListener('click', setPlayerMove, { once: true })
-});
 
 function setPlayerMove(e) {
   
