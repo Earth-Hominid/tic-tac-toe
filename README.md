@@ -8,7 +8,7 @@ This is a one page web application written in Vanilla JavaScript. The DOM (Docum
 
 As an example, the gameboard is create with the following IIFE.
 
-'''js
+```js
 
 // Gameboard Module:
 const gameboard = (() => {
@@ -26,4 +26,4 @@ const gameboard = (() => {
   createGrid(3, 3);
 })();
 
-'''
+```
