@@ -27,4 +27,5 @@ const gameboard = (() => {
   createGrid(3, 3);
 })();
 ```
+
 <img width="741" alt="Screen Shot 2022-08-19 at 9 36 53 PM" src="https://user-images.githubusercontent.com/66766688/185723678-3ee9f83e-62aa-45bf-a644-4f765ce2d9d4.png">

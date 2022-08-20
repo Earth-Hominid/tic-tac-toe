@@ -1,12 +1,12 @@
 // Gameboard Module:
 const gameboard = (() => {
-  const gameGrid = document.querySelector("div.gameboard");
+  const gameGrid = document.querySelector('div.gameboard');
 
   function createGrid(column, row) {
     for (i = 0; i < column * row; i++) {
-      const squareDiv = document.createElement("div");
-      squareDiv.classList.add("cell");
-      squareDiv.setAttribute("data-cell", "");
+      const squareDiv = document.createElement('div');
+      squareDiv.classList.add('cell');
+      squareDiv.setAttribute('data-cell', '');
       gameGrid.appendChild(squareDiv);
     }
   }
@@ -16,16 +16,16 @@ const gameboard = (() => {
 
 // End Game Module:
 const endgame = (() => {
-  const endGameDiv = document.querySelector("div.end-game");
+  const endGameDiv = document.querySelector('div.end-game');
 
   const createEndGameMessage = () => {
-    const dataWinningMessageDiv = document.createElement("div");
-    dataWinningMessageDiv.setAttribute("data-endgame-text", "");
+    const dataWinningMessageDiv = document.createElement('div');
+    dataWinningMessageDiv.setAttribute('data-endgame-text', '');
     endGameDiv.append(dataWinningMessageDiv);
 
-    const restartButton = document.createElement("button");
-    restartButton.setAttribute("id", "restartButton");
-    restartButton.textContent = "Play Again";
+    const restartButton = document.createElement('button');
+    restartButton.setAttribute('id', 'restartButton');
+    restartButton.textContent = 'Play Again';
     endGameDiv.append(restartButton);
     return restartButton;
   };
@@ -35,8 +35,8 @@ const endgame = (() => {
 
 // Game Logic:
 const gameLogic = (() => {
-  const xMarkerClass = "x";
-  const oMarkerClass = "o";
+  const xMarkerClass = 'x';
+  const oMarkerClass = 'o';
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -47,29 +47,29 @@ const gameLogic = (() => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  const dataCells = document.querySelectorAll("[data-cell]");
-  const gameBoard = document.getElementById("gameboard");
+  const dataCells = document.querySelectorAll('[data-cell]');
+  const gameBoard = document.getElementById('gameboard');
   const winningMessageTextElement = document.querySelector(
-    "[data-endgame-text]"
+    '[data-endgame-text]'
   );
-  const winningMessage = document.getElementById("endgame");
-  const restartButton = document.getElementById("restartButton");
+  const winningMessage = document.getElementById('endgame');
+  const restartButton = document.getElementById('restartButton');
   let oTurn;
 
   startGame();
 
-  restartButton.addEventListener("click", startGame);
+  restartButton.addEventListener('click', startGame);
 
   function startGame() {
     oTurn = false;
     dataCells.forEach((cell) => {
       cell.classList.remove(xMarkerClass);
       cell.classList.remove(oMarkerClass);
-      cell.removeEventListener("click", setPlayerMove);
-      cell.addEventListener("click", setPlayerMove, { once: true });
+      cell.removeEventListener('click', setPlayerMove);
+      cell.addEventListener('click', setPlayerMove, { once: true });
     });
     setMoveHover();
-    winningMessage.classList.remove("show");
+    winningMessage.classList.remove('show');
   }
 
   function setPlayerMove(e) {
@@ -94,9 +94,9 @@ const gameLogic = (() => {
       if (draw) {
         winningMessageTextElement.innerText = "It's a Tie!";
       } else {
-        winningMessageTextElement.innerText = `${oTurn ? "O" : "X"} Wins!`;
+        winningMessageTextElement.innerText = `${oTurn ? 'O' : 'X'} Wins!`;
       }
-      winningMessage.classList.add("show");
+      winningMessage.classList.add('show');
     }
 
     function isDraw() {

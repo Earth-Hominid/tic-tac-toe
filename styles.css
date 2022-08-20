@@ -1,10 +1,12 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
 :root {
   --cell-size: 100px;
-  --mark-size: calc(var(--cell-size) * .9);
+  --mark-size: calc(var(--cell-size) * 0.9);
 }
 
 body {
@@ -20,13 +22,13 @@ body {
   align-content: center;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(3, auto)
+  grid-template-columns: repeat(3, auto);
 }
 
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 1px solid #BB86FC;
+  border: 1px solid #bb86fc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +68,7 @@ body {
 .cell.x::before,
 .cell.x::after,
 .cell.o::before {
-  background-color: #BB86FC;
+  background-color: #bb86fc;
 }
 
 .gameboard.x .cell:not(.x):not(.o):hover::before,
@@ -81,7 +83,7 @@ body {
 .gameboard.x .cell:not(.x):not(.o):hover::after {
   content: '';
   position: absolute;
-  width: calc(var(--mark-size) * .15);
+  width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
 }
 
@@ -112,8 +114,8 @@ body {
 
 .cell.o::after,
 .gameboard.o .cell:not(.x):not(.o):hover::after {
-  width: calc(var(--mark-size)*.7);
-  height: calc(var(--mark-size)*.7);
+  width: calc(var(--mark-size) * 0.7);
+  height: calc(var(--mark-size) * 0.7);
   background-color: #292929;
 }
 
@@ -124,7 +126,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
   color: white;
@@ -134,15 +136,15 @@ body {
 
 .end-game button {
   font-size: 3rem;
-  color:#BB86FC;
+  color: #bb86fc;
   background-color: #292929;
-  border: 1px solid #BB86FC;
-  padding: .25em .5em;
+  border: 1px solid #bb86fc;
+  padding: 0.25em 0.5em;
   cursor: pointer;
 }
 
 .end-game button:hover {
-  background-color: #BB86FC;
+  background-color: #bb86fc;
   color: #292929;
   border-color: #292929;
 }
@@ -150,4 +152,3 @@ body {
 .end-game.show {
   display: flex;
 }
-
